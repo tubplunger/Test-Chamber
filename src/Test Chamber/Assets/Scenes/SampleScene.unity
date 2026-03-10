@@ -875,6 +875,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &630450574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630450568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e72b57b28c1cf54fb42cd05be19263d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &630450575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630450568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970212cfe3aab0f43b009a3b05aeee0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &659770949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1647,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1838926152092322962, guid: df8c84f391d51334eb067bd62429e4e9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 630450573}
+    - targetCorrespondingSourceObject: {fileID: 1838926152092322962, guid: df8c84f391d51334eb067bd62429e4e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 630450575}
+    - targetCorrespondingSourceObject: {fileID: 1838926152092322962, guid: df8c84f391d51334eb067bd62429e4e9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 630450574}
   m_SourcePrefab: {fileID: 100100000, guid: df8c84f391d51334eb067bd62429e4e9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
