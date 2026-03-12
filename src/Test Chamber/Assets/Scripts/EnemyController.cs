@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
     public int attackDamage = 2;
     public float attackCooldown = 1.5f;
 
+    public float separationRadius = 1.2f;
+    public float separationForce = 2f;
+
     private Transform player;
     private float attackTimer;
 
@@ -35,11 +38,38 @@ public class EnemyController : MonoBehaviour
 
     void MoveTowardsPlayer()
     {
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            player.position,
-            moveSpeed * Time.deltaTime
-        );
+        Vector2 directionToPlayer = (player.position - transform.position).normalized;
+
+        Vector2 separation = GetSeparationVector();
+
+        Vector2 moveDirection = directionToPlayer + separation;
+
+        transform.position += (Vector3)(moveDirection.normalized * moveSpeed * Time.deltaTime);
+    }
+
+    Vector2 GetSeparationVector()
+    {
+        Collider2D[] neighbors = Physics2D.OverlapCircleAll(
+        transform.position,
+        separationRadius
+    );
+
+        Vector2 separation = Vector2.zero;
+
+        foreach (Collider2D col in neighbors)
+        {
+            if (col.gameObject == gameObject)
+                continue;
+
+            if (col.GetComponent<EnemyController>())
+            {
+                Vector2 diff = (Vector2)(transform.position - col.transform.position);
+
+                separation += diff.normalized / diff.magnitude;
+            }
+        }
+
+        return separation * separationForce;
     }
 
     void AttackPlayer()

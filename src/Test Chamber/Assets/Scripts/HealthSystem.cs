@@ -7,6 +7,10 @@ public class HealthSystem : MonoBehaviour
     public int maxHealth = 10;
     private int currentHealth;
 
+    public int moneyValue = 5;
+
+    public WaveManager waveManager;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -27,6 +31,16 @@ public class HealthSystem : MonoBehaviour
     void Die()
     {
         Debug.Log(gameObject.name + " died.");
+
+        if (waveManager != null)
+        {
+            waveManager.EnemyDied();
+        }
+
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.AddMoney(moneyValue);
+        }
 
         Destroy(gameObject);
     }
