@@ -89,4 +89,9 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+    void OnEnable()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 }

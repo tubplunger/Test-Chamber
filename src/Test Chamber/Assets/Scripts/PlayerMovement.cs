@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
     public float moveSpeed = 6f;
 
     private Rigidbody2D rb;
     private Vector2 movement;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -24,5 +31,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = movement * moveSpeed;
+    }
+
+    public void UpgradeSpeed()
+    {
+        moveSpeed += 0.5f;
     }
 }

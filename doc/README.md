@@ -1,0 +1,5 @@
+Test Chamber is a wave enemy shooter similar to ones like Vampire Survivors, which it takes a lot of inspiration from. I decided to go with a sci-fi theme though with the player having to face waves of robots in, well, a testing chamber.
+
+The player can move around in a little arena where pressing E starts the first wave and subsequent ones. The waves aren't predetermined, the code decides how many enemies and what types of them to throw at the player, just that it should increase with each wave. When a wave is completed though the player will get money and when they press F a upgrade shop opens up where you can increase various different stats to give yourself a better chance at future waves.
+
+The architecture isn't easy to explain, but you have a lot of the code for the player which is speed, inputs, attacks. Enemies have their own controller and attacks. The UI does a lot of its own UI stuff though it sometimes dips into other scripts to get information it needs. There are a few scripts that are shared though, like the player and enemies share the same health script, just so that you didn't have to keep track of two health scripts.

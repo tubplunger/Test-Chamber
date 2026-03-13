@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7871798619389162335}
   m_Layer: 6
   m_Name: Basic Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  moneyValue: 5
+  waveManager: {fileID: 0}
 --- !u!114 &-3051279406142234707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +118,8 @@ MonoBehaviour:
   attackRange: 1.5
   attackDamage: 2
   attackCooldown: 1.5
+  separationRadius: 1.2
+  separationForce: 2
 --- !u!58 &-7871798619389162335
 CircleCollider2D:
   m_ObjectHideFlags: 0

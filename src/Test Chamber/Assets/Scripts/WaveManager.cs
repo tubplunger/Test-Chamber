@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    public Transform[] spawnPoints;
+    public static WaveManager instance;
 
-    public GameObject basicEnemy;
-    public GameObject rangedEnemy;
-    public GameObject tankEnemy;
+    public Transform[] spawnPoints;
 
     public Transform player;
 
@@ -27,7 +25,12 @@ public class WaveManager : MonoBehaviour
 
     private float spawnTimer;
 
-    private bool waveActive = false;
+    public bool waveActive = false;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Update()
     {
@@ -59,6 +62,8 @@ public class WaveManager : MonoBehaviour
     {
         currentWave++;
 
+        UIManager.instance.UpdateWave(currentWave);
+
         enemiesSpawned = 0;
         enemiesAlive = 0;
 
@@ -73,9 +78,10 @@ public class WaveManager : MonoBehaviour
     {
         Vector2 spawnPos = GetSpawnPosition();
 
-        GameObject enemyPrefab = ChooseEnemyType();
+        string type = ChooseEnemyType();
 
-        GameObject enemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        GameObject enemy = EnemyPool.instance.GetEnemy(type);
+        enemy.transform.position = spawnPos;
 
         HealthSystem health = enemy.GetComponent<HealthSystem>();
 
@@ -88,17 +94,17 @@ public class WaveManager : MonoBehaviour
         enemiesAlive++;
     }
 
-    GameObject ChooseEnemyType()
+    string ChooseEnemyType()
     {
         int roll = Random.Range(0, 100);
 
         if (roll < 60)
-            return basicEnemy;
+            return "basic";
 
         if (roll < 85)
-            return rangedEnemy;
+            return "ranged";
 
-        return tankEnemy;
+        return "tank";
     }
 
     Vector2 GetSpawnPosition()

@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public static PlayerAttack instance;
+
     public int meleeDamage = 3;
     public int rangedDamage = 2;
 
     public float meleeRange = 1.5f;
     public float rangedRange = 10f;
 
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+
     public LayerMask enemyLayer;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     public void MeleeAttack()
     {
@@ -36,18 +46,30 @@ public class PlayerAttack : MonoBehaviour
 
         Vector2 direction = (mouseWorld - transform.position).normalized;
 
-        Debug.Log("Ranged attack fired!");
+        GameObject projectile = ProjectilePooling.instance.GetProjectile();
+        projectile.transform.position = firePoint.position;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, rangedRange, enemyLayer);
+        Projectile proj = projectile.GetComponent<Projectile>();
+        proj.Initialize(direction, rangedDamage);
+    }
 
-        if (hit.collider != null)
-        {
-            HealthSystem health = hit.collider.GetComponent<HealthSystem>();
+    public void UpgradeMeleeDamage()
+    {
+        meleeDamage += 2;
+    }
 
-            if (health != null)
-            {
-                health.TakeDamage(rangedDamage);
-            }
-        }
+    public void UpgradeRangedDamage()
+    {
+        rangedDamage += 2;
+    }
+
+    public void UpgradeMeleeRange()
+    {
+        meleeRange += 0.2f;
+    }
+
+    public void UpgradeRangedRange()
+    {
+        rangedRange += 1f;
     }
 }

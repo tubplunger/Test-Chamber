@@ -3,7 +3,11 @@ guid: 2ea8e8063bcaebf4aba9dbaff8073385
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - basicEnemy: {fileID: 1439431939407004810, guid: 42be393414dd71d4bb5ddaa488d47a63, type: 3}
+  - rangedEnemy: {fileID: 1612635388950486700, guid: 3517bd839be2e764c8370ce4725cd0e2, type: 3}
+  - tankEnemy: {fileID: 330150941417324522, guid: cac2ebac178687c4196834597f11db67, type: 3}
+  - player: {fileID: 114721411888576255, guid: df8c84f391d51334eb067bd62429e4e9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
